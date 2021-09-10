@@ -32,7 +32,7 @@ def listarUsuarios():
 def modificarUsuario(nombre, email, contrasena,id):
     cursor = db.cursor()
     
-    cursor.execute('''UPDATE usuarios set nombres = %s, email= %s,contasena = %s WHERE ID = %s''', (
+    cursor.execute('''UPDATE usuarios set nombre = %s, email= %s,contrasena = %s WHERE id = %s''', (
           nombre,
           email,
           contrasena,
@@ -45,7 +45,7 @@ def modificarUsuario(nombre, email, contrasena,id):
 def eliminarUsuario(id):
     cursor = db.cursor()
 
-    cursor.execute('''delete from usuarios where id = %s''', (
+    cursor.execute('''delete from usuarios where id = %s''' (
     id
     ))
     db.commit()
@@ -75,17 +75,22 @@ while opcion != 0:
         crearUsuario(nombre,email,contrasena)
 
 
-        input('Contacto guardado correctamente. Presione enter para continuar..')
+        input('Contacto Creado correctamente. Presione enter para continuar..')
     elif opcion == 2:
         listarUsuarios()
-
+        input('Presione enter para continuar..')
     elif opcion == 3:
-        id = input('ingrese el id del contacto a modifiar')
+        id = input('ingrese el id del contacto a modifiar ')
         nombre = input('Ingrese el nuevo nombre del contacto: ')
         email = input('Ingrese el nuevo correo del contacto: ')
         contrasena = input('Ingrese la nueva  contraseña del contacto: ')
         modificarUsuario(nombre,email,contrasena,id)
-
+        input('Contacto modificado correctamente. Presione enter para continuar..')
     elif opcion == 4:
-        id = input('ingrese el id del contacto a eliminar')
+        id = int(input('ingrese el id del contacto a eliminar '))
         eliminarUsuario(id)
+        print('usuario eliminado correctamete')
+        input('Contacto eliminado correctamente. Presione enter para continuar..')
+    else:
+        print('la opcion no es valida')
+        input('Presione enter para continuar..')
