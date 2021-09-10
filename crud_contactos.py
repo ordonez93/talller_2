@@ -71,9 +71,21 @@ while opcion != 0:
     if opcion == 1:
         nombre = input('Ingrese el nombre del contacto: ')
         email = input('Ingrese el correo del contacto: ')
-        contrasena = input('Ingrese la contraseña del contacto: ')
+        contrasena = input('Cree una contraseña para el contacto: ')
         crearUsuario(nombre,email,contrasena)
+
 
         input('Contacto guardado correctamente. Presione enter para continuar..')
     elif opcion == 2:
         listarUsuarios()
+
+    elif opcion == 3:
+        id = input('ingrese el id del contacto a modifiar')
+        nombre = input('Ingrese el nuevo nombre del contacto: ')
+        email = input('Ingrese el nuevo correo del contacto: ')
+        contrasena = input('Ingrese la nueva  contraseña del contacto: ')
+        modificarUsuario(nombre,email,contrasena,id)
+
+    elif opcion == 4:
+        id = input('ingrese el id del contacto a eliminar')
+        eliminarUsuario(id)
