@@ -17,11 +17,17 @@ def crearUsuario(nombre, email, contrasena):
           email,
           contrasena
         ))
-    
-    
     db.commit()
-
     cursor.close()
+
+
+def listarUsuarios():
+    cursor = db.cursor()
+    cursor.execute('select * from usuarios')
+    usuarios = cursor.fetchall()
+    print(usuarios)
+    cursor.close()
+
 
 def modificarUsuario(nombre, email, contrasena,id):
     cursor = db.cursor()
@@ -36,7 +42,14 @@ def modificarUsuario(nombre, email, contrasena,id):
 
     cursor.close()
 
+def eliminarUsuario(id):
+    cursor = db.cursor()
 
+    cursor.execute('''delete from usuarios where id = %s''', (
+    id
+    ))
+    db.commit()
+    cursor.close()
 
 #crearUsuario('Jeyson', 'jeyson13@gmail.com', '12345678')
 
