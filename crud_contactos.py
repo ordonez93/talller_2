@@ -52,17 +52,6 @@ def eliminarUsuario(id):
     cursor.close()
 
 #crearUsuario('Jeyson', 'jeyson13@gmail.com', '12345678')
-
-cursor = db.cursor()
-
-cursor.execute('select * from usuarios')
-
-usuarios = cursor.fetchall()
-
-print(usuarios)
-
-
-
 opcion = 1
 
 contactos = []
@@ -81,17 +70,10 @@ while opcion != 0:
 
     if opcion == 1:
         nombre = input('Ingrese el nombre del contacto: ')
-        apellido = input('Ingrese el apellidos del contacto: ')
-        celular = input('Ingrese el celular del contacto: ')
-        correo = input('Ingrese el correo del contacto: ')
-
-        contactos.append({
-            'nombre': nombre,
-            'apellido': apellido,
-            'celular': celular,
-            'correo': correo,
-        })
+        email = input('Ingrese el correo del contacto: ')
+        contrasena = input('Ingrese la contraseña del contacto: ')
+        crearUsuario(nombre,email,contrasena)
 
         input('Contacto guardado correctamente. Presione enter para continuar..')
     elif opcion == 2:
-        print(contactos)
+        listarUsuarios()
