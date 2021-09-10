@@ -18,10 +18,25 @@ def crearUsuario(nombre, email, contrasena):
           contrasena
         ))
     
-    #Creacion, modificacion, eliminacion de datos
+    
     db.commit()
 
     cursor.close()
+
+def modificarUsuario(nombre, email, contrasena,id):
+    cursor = db.cursor()
+    
+    cursor.execute('''UPDATE usuarios set nombres = %s, email= %s,contasena = %s WHERE ID = %s''', (
+          nombre,
+          email,
+          contrasena,
+          id
+        ))
+    db.commit()
+
+    cursor.close()
+
+
 
 #crearUsuario('Jeyson', 'jeyson13@gmail.com', '12345678')
 
