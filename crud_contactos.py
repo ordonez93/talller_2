@@ -1,6 +1,44 @@
+import mysql.connector 
+db = mysql.connector.connect(
+    host='localhost',
+    user='root',
+    password='12523',
+    database='blog',
+    port=3306
+)
+
+def crearUsuario(nombre, email, contrasena):
+    cursor = db.cursor()
+    
+    cursor.execute('''insert into 
+        usuarios(nombre, email, contrasena)
+        values(%s, %s, %s)''', (
+          nombre,
+          email,
+          contrasena
+        ))
+    
+    #Creacion, modificacion, eliminacion de datos
+    db.commit()
+
+    cursor.close()
+
+#crearUsuario('Jeyson', 'jeyson13@gmail.com', '12345678')
+
+cursor = db.cursor()
+
+cursor.execute('select * from usuarios')
+
+usuarios = cursor.fetchall()
+
+print(usuarios)
+
+
+
 opcion = 1
 
 contactos = []
+
 
 while opcion != 0:
     print('---------------------------------')
@@ -26,6 +64,6 @@ while opcion != 0:
             'correo': correo,
         })
 
-        input('Contacto guardado correctamente. Presione enter para continuar')
+        input('Contacto guardado correctamente. Presione enter para continuar..')
     elif opcion == 2:
         print(contactos)
