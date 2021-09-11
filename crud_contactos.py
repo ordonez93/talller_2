@@ -51,7 +51,7 @@ def eliminarUsuario(id):
     db.commit()
     cursor.close()
 
-#crearUsuario('Jeyson', 'jeyson13@gmail.com', '12345678')
+
 opcion = 1
 
 contactos = []
