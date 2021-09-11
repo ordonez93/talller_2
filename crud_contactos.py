@@ -45,8 +45,8 @@ def modificarUsuario(nombre, email, contrasena,id):
 def eliminarUsuario(id):
     cursor = db.cursor()
 
-    cursor.execute('''delete from usuarios where id = %s''' (
-    id
+    cursor.execute('''delete from usuarios where id = %s''', (
+    id,
     ))
     db.commit()
     cursor.close()
